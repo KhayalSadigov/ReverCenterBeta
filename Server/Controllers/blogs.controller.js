@@ -1,9 +1,9 @@
-let Courses = require("./../Models/courses.model");
+let Blogs = require("./../Models/blogs.model");
 
-const courseController = {
+const blogController = {
   getAll: async (req, res) => {
     try {
-      let data = await Courses.find({});
+      let data = await Blogs.find({});
       res.send(data);
     } catch (error) {
       res.send(error);
@@ -12,7 +12,7 @@ const courseController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Courses.findById(id);
+      let data = Blogs.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);
@@ -20,7 +20,7 @@ const courseController = {
   },
   post: async (req, res) => {
     try {
-      let newData = new Courses(req.body);
+      let newData = new Blogs(req.body);
       newData.save();
       res.send(newData);
     } catch (error) {
@@ -29,7 +29,7 @@ const courseController = {
   },
   delete: async (req, res) => {
     try {
-      let data = await Courses.findByIdAndDelete(req.params.id);
+      let data = await Blogs.findByIdAndDelete(req.params.id);
       res.send(data);
     } catch (error) {
       res.send(error);
@@ -37,7 +37,7 @@ const courseController = {
   },
   update: async (req, res) => {
     try {
-      let data = await Courses.findByIdAndUpdate(req.params.id, req.body);
+      let data = await Blogs.findByIdAndUpdate(req.params.id, req.body);
       res.send(data);
     } catch (error) {
       res.send(error);
@@ -45,4 +45,4 @@ const courseController = {
   },
 };
 
-module.exports = courseController;
+module.exports = blogController;

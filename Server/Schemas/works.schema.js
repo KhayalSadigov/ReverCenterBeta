@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 
 const workSchema = new mongoose.Schema({
-    ownerid : String,
+    ownerId : String,
     title: String,
     description: String,
     price: Number,
     tel: String,
     email: String,
-    src: Array
+    src: Array,
+    status: Boolean
 })
 
 module.exports = workSchema ;

@@ -7,7 +7,7 @@ const courseSchema = new mongoose.Schema({
     price : Number,
     discount: Number,
     time : Number, //Month
-    startTime : Date ,
+    date : Date ,
     status : Boolean //Active/Deactive 
 })
 
