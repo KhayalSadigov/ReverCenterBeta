@@ -12,7 +12,7 @@ const postController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Posts.findById(id);
+      let data = await Posts.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);

@@ -1,0 +1,84 @@
+.header {
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  padding: 30px 0 0 0;
+  .content {
+    .ham {
+      color: white;
+      font-size: 16px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      display: none;
+      @media screen and (max-width: 800px) {
+        display: block;
+      }
+      .hamBtn {
+        height: 80px;
+      }
+    }
+    border-radius: 2px;
+    background-color: #ffffff7e;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    position: relative;
+    overflow: hidden;
+    ul {
+      @media screen and (max-width: 800px) {
+        display: none;
+      }
+      list-style: none;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      gap: 50px;
+      .btn {
+        color: white;
+        text-decoration: none;
+        outline: none;
+        font-weight: 500;
+        font-size: 16px;
+        transition: 0.2s;
+        &:hover {
+          color: #005f83;
+        }
+      }
+    }
+    .sign {
+      height: 100%;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 99;
+      @media screen and (max-width: 800px) {
+        width: 150px;
+      }
+      @media screen and (max-width: 400px) {
+        width: 100px;
+      }
+    }
+    .decor {
+      transform: rotateZ(15deg);
+      right: -50px;
+      top: -150%;
+      position: absolute;
+      height: 300px;
+      width: 300px;
+      background-color: #005f83;
+      @media screen and (max-width: 800px) {
+        width: 250px;
+      }
+      @media screen and (max-width: 400px) {
+        width: 200px;
+      }
+    }
+  }
+}

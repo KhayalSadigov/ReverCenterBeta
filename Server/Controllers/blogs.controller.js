@@ -12,7 +12,7 @@ const blogController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Blogs.findById(id);
+      let data = await Blogs.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);

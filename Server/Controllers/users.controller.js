@@ -12,7 +12,7 @@ const userController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Users.findById(id);
+      let data = await Users.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);

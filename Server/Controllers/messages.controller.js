@@ -12,7 +12,7 @@ const messageController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Messages.findById(id);
+      let data = await Messages.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);

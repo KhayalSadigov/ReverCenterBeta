@@ -1,0 +1,26 @@
+Server Side:
+    1. Password security (Bcrypt)
+    2. Authentication
+
+Client Side:
+    1. Routing
+    2. Global State
+    3. Design
+    4. Registration
+    5. Crud
+
+Admin Side:
+    1. Routing
+    2. Global State
+    3. Design
+    4. Crud
+
+---------------------------------------------------------------
+
+Referance Design: 
+    https://preview.colorlib.com/theme/academia/
+
+Design constant:
+    main color = #005f83
+    second color = #fff
+    font = Roboto

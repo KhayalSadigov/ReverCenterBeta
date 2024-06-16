@@ -12,7 +12,7 @@ const courseController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Courses.findById(id);
+      let data = await Courses.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);

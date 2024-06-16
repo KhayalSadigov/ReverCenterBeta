@@ -12,7 +12,7 @@ const workController = {
   getOne: async (req, res) => {
     try {
       let { id } = req.params;
-      let data = Works.findById(id);
+      let data = await Works.findById(id);
       res.send(data);
     } catch (error) {
       res.send(error);
