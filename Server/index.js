@@ -25,6 +25,8 @@ const postRouter = require("./Routes/posts.routes");
 const serviceRouter = require("./Routes/services.routes");
 const userRouter = require("./Routes/users.routes");
 const workRouter = require("./Routes/works.routes");
+const mailRouter = require("./Routes/mails.routes");
+
 
 app.use(blogRouter)
 app.use(courseRouter)
@@ -33,6 +35,8 @@ app.use(postRouter)
 app.use(serviceRouter)
 app.use(userRouter)
 app.use(workRouter)
+app.use(mailRouter)
+
 
 
 

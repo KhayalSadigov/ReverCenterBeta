@@ -2,11 +2,63 @@ import styles from "./index.module.scss";
 import ForumIcon from "@mui/icons-material/Forum";
 import SchoolIcon from "@mui/icons-material/School";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay ,Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/pagination";
+import SendIcon from "@mui/icons-material/Send";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { useFormik } from "formik";
+import mailSchema from "../../Validation/mails.validation";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useEffect, useState } from "react";
 function HomePage() {
+  const [mails, setMails] = useState([]);
+  const [checkMail, setCheck] = useState(true);
+  function testMail(array, test) {
+    for (let index = 0; index < array.length; index++) {
+      if (array[index].mail == test) {
+        setCheck(false);
+        break;
+      }
+    }
+  }
+  useEffect(() => {
+    axios.get("http://localhost:2121/api/mails").then((res) => {
+      setMails(res.data);
+      console.log(res.data)
+    });
+  }, []);
+  const emailFormik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: mailSchema,
+    onSubmit: async (values) => {
+      await testMail(mails, values.email);
+      if (checkMail) {
+        axios
+          .post("http://localhost:2121/api/mails", {
+            mail: values.email,
+            status: false,
+          })
+          .then(() => {
+            emailFormik.resetForm();
+            Swal.fire({
+              title: "Successfully!",
+              text: "You followed us",
+              icon: "success",
+            });
+          });
+      }
+      else{
+        Swal.fire({
+          title: "This email has been used!",
+          text: "",
+          icon: "warning",
+        });
+      }
+    },
+  });
+
   return (
     <main>
       <section className={styles.hero}>
@@ -80,37 +132,55 @@ function HomePage() {
       </section>
       <section className={styles.firstBanner}>
         <div className={styles.glass}>
-          <h1>
-            Rever With You <p>Forever!</p>
-          </h1>
+          <h1>Rever With You Forever!</h1>
         </div>
       </section>
-      <section className={styles.slider}>
+      <section className={styles.contact}>
         <div className="container">
-          <Swiper 
-            slidesPerView={5}
-            spaceBetween={30}
-            loop={true}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              clickable: true,
-            }}
-            modules={[Autoplay , Pagination]}
-            className={styles.sliderList}
-          >
-            <SwiperSlide className={styles.sliderItem}>Slide 1</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 2</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 3</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 4</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 5</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 6</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 7</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 8</SwiperSlide>
-            <SwiperSlide className={styles.sliderItem}>Slide 9</SwiperSlide>
-          </Swiper>
+          <div className={styles.content}>
+            <h1>Contact Us!</h1>
+            <form>
+              <TextField label="Outlined" variant="outlined" />
+              <TextField label="Outlined" variant="outlined" />
+              <TextField
+                multiline
+                label="Outlined"
+                variant="outlined"
+                minRows={6}
+              />
+              <Button variant="contained" className={styles.submitBtn}>
+                Send Message
+              </Button>
+            </form>
+            <div className={styles.image}>
+
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className={styles.subsicribe}>
+        <div className="container">
+          <div className={styles.content}>
+            <div>
+              <h1>Stay tune and get the latest update !</h1>
+              <p>Rever with you forever!</p>
+            </div>
+            <div className={styles.input}>
+              <form onSubmit={emailFormik.handleSubmit}>
+                <input
+                  className="mailInput"
+                  placeholder="Enter email address"
+                  id="email"
+                  name="email"
+                  onChange={emailFormik.handleChange}
+                  value={emailFormik.values.email}
+                />
+                <button type="submit" className={styles.sendIcon}>
+                  <SendIcon className={styles.icon} />
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </section>
     </main>

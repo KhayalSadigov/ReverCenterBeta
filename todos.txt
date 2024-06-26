@@ -3,11 +3,12 @@ Server Side:
     2. Authentication
 
 Client Side:
-    1. Routing
+    1. Routing +
     2. Global State
     3. Design
     4. Registration
     5. Crud
+    6. Helmet
 
 Admin Side:
     1. Routing

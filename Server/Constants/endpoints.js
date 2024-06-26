@@ -6,6 +6,13 @@ const endpoints = {
     update: "/api/blogs/:id",
     post: "/api/blogs",
   },
+  mails: {
+    getAll: "/api/mails",
+    getOne: "/api/mails/:id",
+    delete: "/api/mails/:id",
+    update: "/api/mails/:id",
+    post: "/api/mails",
+  },
   courses: {
     getAll: "/api/courses",
     getOne: "/api/courses/:id",
@@ -49,4 +56,4 @@ const endpoints = {
     post: "/api/works",
   },
 };
-module.exports = endpoints
+module.exports = endpoints;
