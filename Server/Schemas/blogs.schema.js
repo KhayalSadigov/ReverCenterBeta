@@ -5,7 +5,8 @@ const blogSchema = new mongoose.Schema({
     title: String,
     description: String,
     cover : String,
-    status : String
+    status : String,
+    date : String
 })
 
 module.exports = blogSchema ;

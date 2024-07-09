@@ -1,0 +1,79 @@
+.glass {
+    width: 100%;
+    height: calc(100% + 20px);
+    position: absolute;
+    z-index: 100000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0000008e;
+    .blogModal {
+      background-color: white;
+      width: 700px;
+      padding: 20px;
+      border-radius: 15px;
+      transition: .2s;
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        img{
+            border-radius: 3px;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        .icons{
+            padding: 0 10px ;
+            color: #245275;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            input[type="file"] {
+                display: none;
+              }      
+              .customInput {
+                color: #245275;
+                cursor: pointer;
+                transition: .2s;
+                &:hover{
+                    transform: scale(1.1);
+                }
+              }
+              .btns{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                button:nth-of-type(1){
+                  background: none ;
+                  outline: none;
+                  border: none;
+                  color: #245275;
+                  transition: .2s;
+                  &:hover{
+                    transform: scale(1.1);
+                    cursor: pointer;
+                  }
+                }
+                
+              }
+        }
+        .btn{
+          display: flex;
+          width: 100%;
+          gap: 25px;
+          .subBtn{
+              width: 100%;
+          }
+          .clsBtn{
+              width: 100%;
+              background-color: rgb(255, 128, 0);
+          }
+        }
+      }
+    }
+  }
+  

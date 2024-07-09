@@ -1,9 +1,10 @@
 .header {
-  z-index: 999;
+  z-index: 99;
   position: absolute;
   width: 100%;
   padding: 30px 0 0 0;
   .content {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     .ham {
       color: white;
       font-size: 16px;
@@ -63,6 +64,29 @@
       }
       @media screen and (max-width: 400px) {
         width: 100px;
+      }
+      .signBtn{
+        color: white;
+        text-decoration: none;
+      }
+      .inBtns{
+        display: flex;
+        gap: 20px;
+        .profileBtn{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 30px;
+          transform: scale(1.4);
+        }
+        .btn{
+          transition: .2s;
+          &:hover{
+            color: #ffffff7e;
+            cursor: pointer;
+          }
+        }
       }
     }
     .decor {

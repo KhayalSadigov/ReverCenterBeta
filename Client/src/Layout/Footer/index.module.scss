@@ -1,0 +1,165 @@
+footer {
+  background-color: rgb(246, 246, 246);
+  padding: 60px 0 10px 0;
+  .content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .slice {
+      width: 300px;
+      padding: 20px;
+      .logoSection {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        .logo {
+          box-sizing: border-box;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-image: url("./../../../public/images/LogoNewEra.jpg");
+          background-size: cover;
+        }
+        h1 {
+          color: #005f83;
+        }
+        h2 {
+          padding: 20px 5px 0px 5px;
+          color: #005f83;
+        }
+        .links {
+          padding: 5px;
+          display: flex;
+          gap: 20px;
+          color: #005f83;
+          a {
+            color: #005f83;
+          }
+        }
+        hr {
+          color: #005f83;
+          width: 100%;
+          margin: 5px;
+        }
+        p {
+          padding: 5px;
+          color: #005f83;
+        }
+      }
+
+      .explore {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .link {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          gap: 10px;
+          text-decoration: none;
+          color: #005f83;
+        }
+        .title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0px 0 20px 0;
+          .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-image: url("./../../../public/images/search-icon.webp");
+            background-size: cover;
+          }
+          h1 {
+            color: #005f83;
+          }
+        }
+      }
+
+      .people {
+        .title {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: 0px 0 30px 0;
+          .logo {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            background-image: url("./../../../public/images/4042356.png");
+            background-size: cover;
+          }
+          h1 {
+            color: #005f83;
+          }
+        }
+        a {
+          text-decoration: none;
+        }
+        .dev {
+          color: #005f83;
+          margin: 15px 5px;
+        }
+        ul {
+          list-style: none;
+          padding: 15px 0;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          li {
+            color: #005f83;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+          }
+          h5{
+            padding: 0 5px;
+            color: #005f83;
+          }
+        }
+      }
+
+      .teacher{
+        .title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0px 0 30px 0;
+            .logo {
+              height: 50px;
+              width: 50px;
+              border-radius: 50%;
+              background-image: url("./../../../public/images/kisspng-computer-icons-icon-design-education-workshop-5af978918a1236.0065836615262987695656.jpg");
+              background-size: cover;
+            }
+            h1 {
+              color: #005f83;
+            }
+          }
+          p{
+            color: #005f83;
+          }
+          hr{
+            margin: 10px 0;
+          }
+          ul{
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            color: #005f83;
+            li{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                a{
+                    text-decoration: none;
+                }
+            }
+          }
+      }
+    }
+  }
+}

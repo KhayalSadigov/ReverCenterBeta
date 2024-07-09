@@ -6,6 +6,7 @@ const blogValidation = Joi.object({
     title : Joi.string().min(1).required(),
     description: Joi.string().min(200).required(),
     cover: Joi.string().required(),
-    status: Joi.boolean().required()
+    status: Joi.boolean().required(),
+    date : Joi.string().required()
 })
 module.exports = blogValidation

@@ -52,6 +52,9 @@
         justify-content: center;
         flex-wrap: wrap;
       }
+      a{
+        text-decoration: none;
+      }
       .getBtn {
         padding: 20px 45px;
         background-color: #005f83;
@@ -231,14 +234,15 @@
 }
 .contact {
   background-color: #f8f8f8;
-  padding: 30px 0;
+  padding: 50px 0;
   .content {
+    
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
     height: 100%;
     background-color: #fff;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 30px;
+    border-radius: 2px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 12px 24px;
     display: flex;
     flex-wrap: wrap;
@@ -246,22 +250,42 @@
       color: #005f83;
       width: 100%;
       text-align: center;
-      padding: 0 0 30px 0 ;
+      border-bottom: 2px solid #005f83;
+      font-size: 35px;
+      padding: 0 0 10px 0 ;
+      margin: 0 0px 25px 0px; 
     }
     .image{
       width: 50%;
       background-image: url("./../../../public/images/2884318.png") ;
       background-position: center;
       background-size: cover;
-    }
+      
+   }
     form {
       width: 50%;
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      .input{
+        margin: 15px 0 0 0;
+      }
+      span{
+        margin: 5px 0 10px 0;
+        color: red;
+        text-align: center;
+      }
       .submitBtn {
         background-color: #005f83;
         height: 40px;
+        margin: 10px 0;
+      }
+    }
+    @media screen and (max-width: 1000px) {
+      .image{
+        display: none;
+      }
+      form{
+        width: 100%;
       }
     }
   }
@@ -315,6 +339,16 @@
       cursor: pointer;
       .icon {
         color: white;
+      }
+    }
+    @media screen and (max-width: 1000px) {
+      justify-content: center;
+      p{
+        text-align: center;
+        margin: 10px 0;
+      }
+      .input{
+        display: none;
       }
     }
   }

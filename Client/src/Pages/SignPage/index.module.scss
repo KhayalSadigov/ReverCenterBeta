@@ -1,0 +1,136 @@
+.signPage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 999;
+    
+    .content{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 85%;
+        width: 60%;
+        display: flex;
+        align-items: center;
+        position: relative;
+        .banner{
+            transition: .2s;
+            background-image: url('./../../../public/images/v627-aew-10-technologybackground.jpg');
+            background-size: cover;
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 15px;
+            h2{
+                color: white;
+            }
+            p{
+                color: white;
+            }
+        }
+        .signIn{
+            .errorIn{
+                color: rgb(214, 0, 0);
+                text-align: center;
+                display: block;
+            }
+            .password{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                .input{
+                    width: 100%;
+                }
+                .icon{
+                    position: absolute;
+                    right: 20px;
+                    color: rgb(116, 116, 116);
+                    transition: .2s;
+                    &:hover{
+                        color: #005f83;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .signUp{
+            .errorUp{
+                color: rgb(214, 0, 0);
+                text-align: center;
+                display: block;
+            }
+            .password{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                .input{
+                    width: 100%;
+                }
+                .icon{
+                    position: absolute;
+                    right: 20px;
+                    color: rgb(116, 116, 116);
+                    transition: .2s;
+                    &:hover{
+                        color: #005f83;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .signUp , .signIn{
+            h2{
+                text-align: center;
+            }
+            width: 50%;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+            form{
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                .btn{
+                    background-color: #005f83;
+                }
+            }
+            .or{
+                padding: 5px 0;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                hr{
+                    width: 43%;
+                    height: 1px;
+                }
+            }
+            a{
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 16px;
+                gap: 10px;
+                color: #005f83;
+            }
+            h4{
+                text-align: center;
+                font-weight: 400;
+                i{
+                    font-size: 17px;
+                    color: #005f83;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -7,8 +7,6 @@ const workSchema = new mongoose.Schema({
     price: Number,
     tel: String,
     email: String,
-    src: Array,
-    status: Boolean
 })
 
 module.exports = workSchema ;

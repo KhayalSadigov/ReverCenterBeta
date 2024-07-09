@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import MainRout from "../Pages/MainRout";
 import HomePage from "../Pages/HomePage";
 import CommunityPage from "../Pages/CommunityPage";
-import ServicePage from "../Pages/ServicePage";
-import StudyPage from "../Pages/StudyPage";
 import NotFoundPage from "../Pages/NotFoundPage";
+import SignPage from "../Pages/SignPage";
+import ProfilePage from "../Pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -20,12 +20,12 @@ const router = createBrowserRouter([
         element: <CommunityPage />,
       },
       {
-        path: "service",
-        element: <ServicePage />,
+        path: "profile",
+        element: <ProfilePage />,
       },
       {
-        path: "study",
-        element: <StudyPage />,
+        path: "sign",
+        element: <SignPage />
       },
       {
         path: "*",

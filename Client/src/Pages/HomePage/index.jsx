@@ -9,53 +9,57 @@ import { useFormik } from "formik";
 import mailSchema from "../../Validation/mails.validation";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useEffect, useState } from "react";
+import messageSchema from "../../Validation/messages.validation";
+import { DataContext } from "../../Context/dataContext";
+import { useContext } from "react";
 function HomePage() {
-  const [mails, setMails] = useState([]);
-  const [checkMail, setCheck] = useState(true);
-  function testMail(array, test) {
-    for (let index = 0; index < array.length; index++) {
-      if (array[index].mail == test) {
-        setCheck(false);
-        break;
-      }
-    }
-  }
-  useEffect(() => {
-    axios.get("http://localhost:2121/api/mails").then((res) => {
-      setMails(res.data);
-      console.log(res.data)
-    });
-  }, []);
   const emailFormik = useFormik({
     initialValues: {
       email: "",
     },
     validationSchema: mailSchema,
     onSubmit: async (values) => {
-      await testMail(mails, values.email);
-      if (checkMail) {
-        axios
-          .post("http://localhost:2121/api/mails", {
-            mail: values.email,
-            status: false,
-          })
-          .then(() => {
-            emailFormik.resetForm();
-            Swal.fire({
-              title: "Successfully!",
-              text: "You followed us",
-              icon: "success",
-            });
+      axios
+        .post("http://localhost:2121/api/mails", {
+          mail: values.email,
+          status: false,
+        })
+        .then(() => {
+          emailFormik.resetForm();
+          Swal.fire({
+            title: "Successfully!",
+            text: "You followed us",
+            icon: "success",
           });
-      }
-      else{
-        Swal.fire({
-          title: "This email has been used!",
-          text: "",
-          icon: "warning",
         });
-      }
+    },
+  });
+  let store = useContext(DataContext);
+  store.location.setPathname(window.location.pathname);
+  console.log(store.client.id)
+  const messageFormik = useFormik({
+    initialValues: {
+      email: "",
+      title: "",
+      message: "",
+    },
+    validationSchema: messageSchema,
+    onSubmit: async (values) => {
+      axios
+        .post("http://localhost:2121/api/messages", {
+          title: values.title,
+          content: values.message,
+          email: values.email,
+          status: false,
+        })
+        .then(() => {
+          messageFormik.resetForm();
+          Swal.fire({
+            title: "Successfully!",
+            text: "Your message sended to us!",
+            icon: "success",
+          });
+        });
     },
   });
 
@@ -73,14 +77,18 @@ function HomePage() {
               This place is perfect for you!
             </p>
             <div className={styles.btns}>
-              <span className={styles.getBtn}>Get started!</span>
-              <span className={styles.aboutBtn}>About Us</span>
+              <a href="#about" className={styles.getBtn}>
+                What is the purpose?
+              </a>
+              <a href="#contact" className={styles.aboutBtn}>
+                Contact Us!
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={styles.second}>
+      <section id="about" className={styles.second}>
         <div className={styles.right}></div>
         <div className={styles.left}>
           <div className={styles.content}>
@@ -95,9 +103,8 @@ function HomePage() {
                 <div>
                   <h5>Community</h5>
                   <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Deleniti vel facere beatae animi non soluta saepe.
-                    Doloremque architecto assumenda libero.
+                    Share your thoughts about your field of expertise, get help
+                    in difficult situations, help beginners!
                   </p>
                 </div>
               </div>
@@ -106,9 +113,8 @@ function HomePage() {
                 <div>
                   <h5>Study</h5>
                   <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Deleniti vel facere beatae animi non soluta saepe.
-                    Doloremque architecto assumenda libero.
+                    Entrust your education to us, become an expert by getting
+                    help from experts, and keep up with the times!!
                   </p>
                 </div>
               </div>
@@ -120,9 +126,8 @@ function HomePage() {
                 <div>
                   <h5>Services</h5>
                   <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Deleniti vel facere beatae animi non soluta saepe.
-                    Doloremque architecto assumenda libero.
+                    Our various services are ready for you! Entrust your work to
+                    professionals, enjoy quality!
                   </p>
                 </div>
               </div>
@@ -130,34 +135,73 @@ function HomePage() {
           </div>
         </div>
       </section>
+
       <section className={styles.firstBanner}>
         <div className={styles.glass}>
           <h1>Rever With You Forever!</h1>
         </div>
       </section>
-      <section className={styles.contact}>
+
+      <section id="contact" className={styles.contact}>
         <div className="container">
           <div className={styles.content}>
             <h1>Contact Us!</h1>
-            <form>
-              <TextField label="Outlined" variant="outlined" />
-              <TextField label="Outlined" variant="outlined" />
+            <form onSubmit={messageFormik.handleSubmit}>
               <TextField
-                multiline
-                label="Outlined"
+                className={styles.input}
+                label="Mail address"
                 variant="outlined"
-                minRows={6}
+                name="email"
+                onChange={messageFormik.handleChange}
+                value={messageFormik.values.email}
               />
-              <Button variant="contained" className={styles.submitBtn}>
+              {messageFormik.errors.email ? (
+                <span>{messageFormik.errors.email} !</span>
+              ) : (
+                <span></span>
+              )}
+              <TextField
+                className={styles.input}
+                label="Title"
+                variant="outlined"
+                name="title"
+                onChange={messageFormik.handleChange}
+                value={messageFormik.values.title}
+              />
+              {messageFormik.errors.title ? (
+                <span>{messageFormik.errors.title} !</span>
+              ) : (
+                <span></span>
+              )}
+              <TextField
+                className={styles.input}
+                label="Message"
+                variant="outlined"
+                multiline
+                minRows={8}
+                name="message"
+                onChange={messageFormik.handleChange}
+                value={messageFormik.values.message}
+              />
+              {messageFormik.errors.message ? (
+                <span>{messageFormik.errors.message} !</span>
+              ) : (
+                <span></span>
+              )}
+
+              <Button
+                type="submit"
+                variant="contained"
+                className={styles.submitBtn}
+              >
                 Send Message
               </Button>
             </form>
-            <div className={styles.image}>
-
-            </div>
+            <div className={styles.image}></div>
           </div>
         </div>
       </section>
+
       <section className={styles.subsicribe}>
         <div className="container">
           <div className={styles.content}>
